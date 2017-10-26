@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+			* html, html, body { height:100%; overflow:hidden; margin:0; padding:0; background-color:black; }
+			marquee {
+				width:100%; 
+				color:white;
+				font-size:20pt;
+				font-family:Verdana, Arial, sans-serif;
+				white-space:nowrap;
+				position:absolute;
+				left:0; right:0;
+				z-index:9001;
+			}
+			#videoWrapper {
+				width:  100%;
+				height: 100%;
+				position: relative; 
+			}
+			#videoWrapper video {
+				top:0; left:0;
+				width: 100%;
+				height:100%;
+				position: absolute;
+			}
+		</style>
+</head>
+
+<body>
+
+<div id="videoWrapper">
+	<video id="lgw"  controls style="z-index:8;  display:none;">
+		<source src="loading.webm"  type='video/webm'>
+		<source src="loading.mp4"  type='video/mp4'>
+	</video>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+	$("#lgw").get(0).removeAttribute('controls');
+	$("#fack").get(0).removeAttribute('controls');
+</script>
+
+<script>
+	$("#lgw").bind("ended", function() {
+		$('#lgw').get(0).currentTime = 0;
+		$("#lgw").get(0).play();
+	});
+	$(document).ready(function() {
+		$("#lgw").show();
+		$("#lgw").get(0).play();
+	});
+</script>
+
+</body>
+</html>
